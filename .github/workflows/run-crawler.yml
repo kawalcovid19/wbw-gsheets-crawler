@@ -3,6 +3,8 @@ name: Run Crawler
 on:
   schedule:
     - cron: "0 * * * *"
+  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   crawl:
@@ -16,6 +18,8 @@ jobs:
         with:
           node-version: '14'
           cache: 'yarn'
+      - run: |
+         echo "crawling started"
       - name: install dependencies
         run: yarn install          
       - name: run crawler
