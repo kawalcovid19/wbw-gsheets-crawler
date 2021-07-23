@@ -34,9 +34,9 @@ const crawler = async (
     throw "Provide all mandatory configuration";
   }
 
-  // Check if index is available
   if (!dry_run) {
     try {
+      // Check if index is available
       await typesense.collections().create(schema);
       console.log(`Index ${schema.name} created`);
     } catch (e) {
@@ -70,13 +70,13 @@ const crawler = async (
       for (const row of data) {
         let doc = renameKeys(row, renamedKey);
 
-        // Add metadata
+        // Add `id` and `sheet` fields
         doc["id"] = `${sheet.replace(/ /g, "_")}_${idx}`.toLowerCase();
         doc["sheet"] = sheet;
         idx += 1;
 
-        // Print to console if not in dry run mode
         if (!dry_run) {
+          // Push to typesense
           typesense.collections(indexId).documents().upsert(doc);
         }
       }
