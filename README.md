@@ -30,6 +30,13 @@ Every data row, `id` and `sheet` fields will be added to mark which worksheet it
 
 Index will be made automatically when it's not present. To prevent server rejection, crawling process will be executed sequentially (not in parallel).
 
+### DEVELOPMENT NOTES
+
+We have two flags to make development easier:
+
+1. `--test_script=SCRIPTNAME` will only execute given script in the `metadata/` directory
+2. `--dry_run` to run as dry run mode / not inserting data into typesense
+
 ### CONTRIBUTING GUIDELINES
 
 Please refers to [wargabantuwarga contributing guidelines](https://github.com/kawalcovid19/wargabantuwarga.com/blob/main/CONTRIBUTING.md)
