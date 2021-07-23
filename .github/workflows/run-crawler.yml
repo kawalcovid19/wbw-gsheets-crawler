@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  crawl:
+  crawler:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,11 +18,9 @@ jobs:
         with:
           node-version: '14'
           cache: 'yarn'
-      - run: |
-         echo "crawling started"
       - name: install dependencies
         run: yarn install          
-      - name: run crawler
+      - name: begin crawler
         run: node start.js
         env:
           TYPESENSE_HOST: ${{ secrets.TYPESENSE_HOST }}
