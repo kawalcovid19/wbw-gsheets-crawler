@@ -20,11 +20,6 @@ jobs:
           cache: 'yarn'
       - name: install dependencies
         run: yarn install          
-      - shell: bash
-        run: |
-          echo $TYPESENSE_HOST
-        env:
-          TYPESENSE_HOST: ${{ secrets.TYPESENSE_HOST }}
       - name: begin crawler
         run: node start.js
         env:
