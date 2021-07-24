@@ -4,7 +4,7 @@ let typesense = new Typesense.Client({
     {
       host: process.env.TYPESENSE_HOST,
       port: process.env.TYPESENSE_PORT,
-      protocol: "http", // Use http for data ingestion
+      protocol: process.env.TYPESENSE_PROTOCOL,
     },
   ],
   apiKey: process.env.TYPESENSE_KEY,

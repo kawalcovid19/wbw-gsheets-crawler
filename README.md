@@ -11,7 +11,7 @@ cp .env.example .env
 yarn install
 ```
 
-Modify `TYPESENSE_HOST`, `TYPESENSE_PORT` and `TYPESENSE_KEY` afterwards. Then you're good to go.
+Modify `TYPESENSE_HOST`, `TYPESENSE_PORT`, `TYPESENSE_PROTOCOL` and `TYPESENSE_KEY` afterwards. Then you're good to go.
 
 ### WRITING CRAWLER
 
