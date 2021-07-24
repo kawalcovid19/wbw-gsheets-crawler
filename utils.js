@@ -62,7 +62,7 @@ const crawler = async (
       const keys = Object.keys(data[0]);
       const renamedKey = {};
       for (const key of keys) {
-        renamedKey[key] = key.toLowerCase().replace(/ /g, "_");
+        renamedKey[key] = key.toLowerCase().trim().replace(/ /g, "_");
       }
 
       // Store each row to typesense
