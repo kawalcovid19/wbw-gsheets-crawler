@@ -23,7 +23,7 @@ Crawler will read all scripts in `metadata` directory to intepret sheet structur
 - **schema** (`object`) : typesense schema object. See [here](https://typesense.org/docs/0.21.0/api/collections.html#create-a-collection) for reference.
 - **sheetId** (`string`) : a public google-sheets ID i.e.  
   `https://docs.google.com/spreadsheets/u/1/d/<SHEET_ID>/view`
-- **indexId** (`string`) : typesense's index name.
+- **indexId** (`string`) : typesense's index name. Must have `wbw-` prefix.
 - **worksheet** (`array`): List of worksheets in given gsheets
 
 Every data row, `id` and `sheet` fields will be added to mark which worksheet it's originated.
