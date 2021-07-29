@@ -11,6 +11,11 @@ const schema = {
       facet: false,
     },
     {
+      name: "order",
+      type: "int32",
+      facet: true,
+    },
+    {
       name: "platform_telemedicine",
       type: "string",
       facet: true,
