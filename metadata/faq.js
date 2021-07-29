@@ -11,6 +11,11 @@ const schema = {
       facet: false,
     },
     {
+      name: "order",
+      type: "int32",
+      facet: true,
+    },
+    {
       name: "kategori_pertanyaan",
       type: "string",
       facet: true,

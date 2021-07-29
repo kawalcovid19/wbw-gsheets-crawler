@@ -20,11 +20,13 @@ Modify `TYPESENSE_HOST`, `TYPESENSE_PORT`, `TYPESENSE_PROTOCOL` and `TYPESENSE_K
 
 Crawler will read all scripts in `metadata` directory to intepret sheet structure. Each script represent an index and must contains:
 
-- **schema** (`object`) : typesense schema object. See [here](https://typesense.org/docs/0.21.0/api/collections.html#create-a-collection) for reference.
-- **sheetId** (`string`) : a public google-sheets ID i.e.  
+- **schema** : typesense schema object. See [here](https://typesense.org/docs/0.21.0/api/collections.html#create-a-collection) for reference.
+- **sheetId** : a public google-sheets ID i.e.  
   `https://docs.google.com/spreadsheets/u/1/d/<SHEET_ID>/view`
-- **indexId** (`string`) : typesense's index name. Must have `wbw-` prefix.
-- **worksheet** (`array`): List of worksheets in given gsheets
+- **indexId** : typesense's index name. Must have `wbw-` prefix.
+- **worksheet** : List of worksheets in given gsheets
+
+> A field named `order` must be defined manually in the metadata with data `int32` data type as sortable field
 
 Every data row, `id` and `sheet` fields will be added to mark which worksheet it's originated.
 
