@@ -7,11 +7,6 @@ const { crawler } = require("./utils");
 const fs = require("fs");
 const scriptsDir = "./metadata/";
 
-/**
- * A wrapper function.
- * Will run scraper as defined in `/metadata/` dir
- *
- */
 (async () => {
   let scripts = fs.readdirSync(scriptsDir);
   let dry_run = false;
@@ -51,7 +46,6 @@ const scriptsDir = "./metadata/";
     };
   });
 
-  // Execute in parallel to avoid server flood
   async.series(fn, (error, script) => {
     if (error) throw error;
     console.log(`"${script}" executed`);

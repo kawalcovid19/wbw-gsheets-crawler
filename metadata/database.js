@@ -50,6 +50,17 @@ const schema = {
       type: "string",
       facet: true,
     },
+    {
+      name: "lokasi",
+      type: "string",
+      facet: true,
+      optional: true,
+    },
+    {
+      name: "kebutuhan",
+      type: "string",
+      facet: true,
+    },
   ],
 };
 
