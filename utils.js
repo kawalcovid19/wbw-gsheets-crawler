@@ -21,11 +21,6 @@ const renameKeys = (obj, newKeys) => {
   return Object.assign({}, ...keyValues);
 };
 
-/**
- * Crawler function
- * @param {array} worksheets worksheets
- * @param {object} config configurations
- */
 const crawler = async (
   worksheets,
   { dry_run = false, indexId, schema, sheetId }
@@ -44,6 +39,7 @@ const crawler = async (
     }
   }
 
+  let order = 1;
   // Loop through each worksheets and ingest into typesense
   for (const sheet of worksheets) {
     try {
@@ -65,19 +61,19 @@ const crawler = async (
         renamedKey[key] = key.toLowerCase().trim().replace(/ /g, "_");
       }
 
-      // Store each row to typesense
-      let idx = 1;
       for (const row of data) {
         let doc = renameKeys(row, renamedKey);
 
-        // Add `id` and `sheet` fields
-        doc["id"] = `${sheet.replace(/ /g, "_")}_${idx}`.toLowerCase();
+        // Add `id`, `sheet`, `order` fields
+        doc["id"] = `${sheet.replace(/ /g, "_")}_${order}`.toLowerCase();
         doc["sheet"] = sheet;
-        idx += 1;
+        doc["order"] = order;
+        order += 1;
 
         if (!dry_run) {
-          // Push to typesense
           typesense.collections(indexId).documents().upsert(doc);
+        } else {
+          console.log(doc);
         }
       }
     } catch (e) {
